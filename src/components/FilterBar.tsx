@@ -36,29 +36,50 @@ export default function FilterBar({ filters, setFilters, makes, sources }: Filte
           </div>
         </div>
 
-        {/* Make */}
-        <select
-          value={filters.make}
-          onChange={(e) => updateFilter('make', e.target.value)}
-          className="bg-mv-black border border-mv-yellow/30 rounded-lg px-4 py-2.5 text-white focus:border-mv-yellow focus:outline-none min-w-[150px]"
-        >
-          <option value="">All Makes</option>
-          {makes.map(make => (
-            <option key={make} value={make}>{make}</option>
-          ))}
-        </select>
+        {/* Make dropdown with clear option */}
+        <div className="relative">
+          <select
+            value={filters.make}
+            onChange={(e) => updateFilter('make', e.target.value)}
+            className="bg-mv-black border border-mv-yellow/30 rounded-lg px-4 py-2.5 pr-8 text-white focus:border-mv-yellow focus:outline-none min-w-[150px] appearance-none"
+          >
+            <option value="">All Makes</option>
+            {makes.map(make => (
+              <option key={make} value={make}>{make}</option>
+            ))}
+          </select>
+          {filters.make && (
+            <button
+              onClick={() => updateFilter('make', '')}
+              className="absolute right-8 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+            >
+              ✕
+            </button>
+          )}
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+            ▼
+          </div>
+        </div>
 
-        {/* Source */}
-        <select
-          value={filters.source}
-          onChange={(e) => updateFilter('source', e.target.value)}
-          className="bg-mv-black border border-mv-yellow/30 rounded-lg px-4 py-2.5 text-white focus:border-mv-yellow focus:outline-none min-w-[150px]"
-        >
-          <option value="">All Sources</option>
+        {/* Source chips - clickable to toggle */}
+        <div className="flex items-center gap-2 flex-wrap">
           {sources.map(source => (
-            <option key={source} value={source}>{source}</option>
+            <button
+              key={source}
+              onClick={() => updateFilter('source', filters.source === source ? '' : source)}
+              className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                filters.source === source
+                  ? 'bg-mv-yellow text-mv-black'
+                  : 'bg-mv-black border border-mv-yellow/30 text-gray-300 hover:border-mv-yellow hover:text-white'
+              }`}
+            >
+              {source}
+              {filters.source === source && (
+                <span className="ml-1.5">✕</span>
+              )}
+            </button>
           ))}
-        </select>
+        </div>
 
         {/* Sort */}
         <select

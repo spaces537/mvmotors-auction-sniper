@@ -51,12 +51,15 @@ export default function Header({ urgentCount, onAlertsClick, onRefresh, lastUpda
               title="Alerts"
             >
               <Bell className="w-5 h-5 text-mv-yellow" />
-              {urgentCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center animate-pulse">
-                  {urgentCount}
-                </span>
-              )}
             </button>
+            
+            {/* Urgent badge - only show if > 0 */}
+            {urgentCount > 0 && (
+              <div className="flex items-center gap-1 bg-red-500/20 border border-red-500/50 px-2 py-1 rounded-lg">
+                <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                <span className="text-red-400 text-sm font-medium">{urgentCount} urgent</span>
+              </div>
+            )}
           </div>
         </div>
       </div>
