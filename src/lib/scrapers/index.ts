@@ -20,8 +20,8 @@ const DEMO_AUCTION_CARS: AuctionCar[] = [
     location: 'Antwerp',
   },
   {
-    id: 'bca-demo-1',
-    source: 'BCA',
+    id: 'vwe-demo-1',
+    source: 'VWE',
     title: 'Mercedes-Benz A180 AMG Line',
     make: 'Mercedes-Benz',
     model: 'A180',
@@ -33,7 +33,7 @@ const DEMO_AUCTION_CARS: AuctionCar[] = [
     buyNow: 31000,
     auctionEnd: new Date(Date.now() + 45 * 60 * 1000),
     imageUrl: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=400',
-    link: 'https://bca.be',
+    link: 'https://vwe.be',
     location: 'Brussels',
   },
   {
@@ -69,8 +69,8 @@ const DEMO_AUCTION_CARS: AuctionCar[] = [
     location: 'Liège',
   },
   {
-    id: 'bca-demo-2',
-    source: 'BCA',
+    id: 'vwe-demo-2',
+    source: 'VWE',
     title: 'Porsche Cayenne Coupe E-Hybrid',
     make: 'Porsche',
     model: 'Cayenne',
@@ -82,7 +82,7 @@ const DEMO_AUCTION_CARS: AuctionCar[] = [
     buyNow: 79000,
     auctionEnd: new Date(Date.now() + 1 * 60 * 60 * 1000),
     imageUrl: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400',
-    link: 'https://bca.be',
+    link: 'https://vwe.be',
     location: 'Antwerp',
   },
   {
@@ -118,8 +118,8 @@ const DEMO_AUCTION_CARS: AuctionCar[] = [
     location: 'Brussels',
   },
   {
-    id: 'bca-demo-3',
-    source: 'BCA',
+    id: 'vwe-demo-3',
+    source: 'VWE',
     title: 'Peugeot 3008 GT BlueHDi',
     make: 'Peugeot',
     model: '3008',
@@ -130,7 +130,7 @@ const DEMO_AUCTION_CARS: AuctionCar[] = [
     currentBid: 21500,
     auctionEnd: new Date(Date.now() + 4 * 60 * 60 * 1000),
     imageUrl: 'https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=400',
-    link: 'https://bca.be',
+    link: 'https://vwe.be',
     location: 'Charleroi',
   },
 ];
@@ -217,7 +217,7 @@ async function scrape2dehands(): Promise<AuctionCar[]> {
 export async function getAllAuctions(): Promise<AuctionCar[]> {
   const allCars: AuctionCar[] = [];
   
-  // Add demo auction data (Autorola, BCA, Adesa need login)
+  // Add demo auction data (Autorola, VWE, Adesa need login)
   allCars.push(...DEMO_AUCTION_CARS);
   
   // Add real 2dehands data
