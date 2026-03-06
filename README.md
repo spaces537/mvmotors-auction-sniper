@@ -21,7 +21,7 @@ Belgian Car Auction Aggregator & Sniper Dashboard
 |--------|--------|-------|
 | 2dehands.be | ✅ Live | Real-time scraping |
 | Autorola | 🎭 Demo | Requires B2B login |
-| BCA | 🎭 Demo | Requires B2B login |
+| VWE | 🎭 Demo | Requires B2B login |
 | Adesa | 🎭 Demo | Requires B2B login |
 
 ## 🚀 Quick Start
@@ -88,7 +88,7 @@ auction-sniper/
 
 ### Adding Real Auction Sources
 
-To enable real data from Autorola, BCA, or Adesa:
+To enable real data from Autorola, VWE, or Adesa:
 
 1. Obtain B2B API credentials from the auction platform
 2. Add credentials to environment variables
@@ -96,8 +96,8 @@ To enable real data from Autorola, BCA, or Adesa:
 
 ```env
 AUTOROLA_API_KEY=your_key_here
-BCA_USERNAME=your_username
-BCA_PASSWORD=your_password
+VWE_USERNAME=your_username
+VWE_PASSWORD=your_password
 ```
 
 ## 📸 Screenshots
