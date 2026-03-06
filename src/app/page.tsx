@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { AuctionCar, FilterOptions } from '@/types/auction';
+import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
 import FilterBar from '@/components/FilterBar';
 import AuctionGrid from '@/components/AuctionGrid';
@@ -13,6 +14,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [lastUpdate, setLastUpdate] = useState<Date>(new Date());
   const [showAlerts, setShowAlerts] = useState(false);
+  const [activeSection, setActiveSection] = useState('dashboard');
   
   const [filters, setFilters] = useState<FilterOptions>({
     search: '',
@@ -116,37 +118,59 @@ export default function Home() {
     [cars]
   );
 
+  // Handle section changes
+  const handleSectionChange = (section: string) => {
+    setActiveSection(section);
+    if (section === 'alerts') {
+      setShowAlerts(true);
+    } else if (section === 'urgent') {
+      // Filter to urgent only
+      setFilters({ ...filters, sortBy: 'endTime', sortOrder: 'asc' });
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <main className="min-h-screen bg-mv-dark">
-      <Header 
+      {/* Sidebar */}
+      <Sidebar 
+        activeSection={activeSection}
+        onSectionChange={handleSectionChange}
         urgentCount={urgentCount}
-        onAlertsClick={() => setShowAlerts(!showAlerts)}
-        onRefresh={fetchAuctions}
-        lastUpdate={lastUpdate}
       />
-      
-      <div className="container mx-auto px-4 py-6">
-        <StatsBar 
-          totalCars={cars.length}
-          filteredCars={filteredCars.length}
+
+      {/* Main content - offset by sidebar width */}
+      <div className="ml-64">
+        <Header 
           urgentCount={urgentCount}
-          sources={uniqueSources}
+          onAlertsClick={() => setShowAlerts(!showAlerts)}
+          onRefresh={fetchAuctions}
+          lastUpdate={lastUpdate}
         />
         
-        <FilterBar 
-          filters={filters}
-          setFilters={setFilters}
-          makes={uniqueMakes}
-          sources={uniqueSources}
-        />
-        
-        {loading ? (
-          <div className="flex items-center justify-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-4 border-mv-yellow border-t-transparent"></div>
-          </div>
-        ) : (
-          <AuctionGrid cars={filteredCars} />
-        )}
+        <div className="container mx-auto px-6 py-6 max-w-7xl">
+          <StatsBar 
+            totalCars={cars.length}
+            filteredCars={filteredCars.length}
+            urgentCount={urgentCount}
+            sources={uniqueSources}
+          />
+          
+          <FilterBar 
+            filters={filters}
+            setFilters={setFilters}
+            makes={uniqueMakes}
+            sources={uniqueSources}
+          />
+          
+          {loading ? (
+            <div className="flex items-center justify-center h-64">
+              <div className="animate-spin rounded-full h-12 w-12 border-4 border-mv-yellow border-t-transparent"></div>
+            </div>
+          ) : (
+            <AuctionGrid cars={filteredCars} />
+          )}
+        </div>
       </div>
 
       {showAlerts && (

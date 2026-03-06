@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'MVMotors Auction Sniper',
   description: 'Belgian Car Auction Aggregator & Sniper',
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({

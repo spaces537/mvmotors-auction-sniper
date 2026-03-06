@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/mv-favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="MV Motors - Kwaliteitsvolle tweedehandswagens in Mechelen. Alle voertuigen gekeurd met Car-Pass en garantie." />
+    <meta name="keywords" content="MV Motors, tweedehandswagen, Mechelen, occasion, auto kopen, Car-Pass, garantie" />
+    <title>MV Motors | Kwaliteitsvoertuigen Mechelen</title>
+    <script type="module" crossorigin src="/assets/index-KKxZHyXz.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BaQeTk2w.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
