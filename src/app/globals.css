@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --mv-yellow: #FFD700;
+  --mv-gold: #FFC107;
+  --mv-black: #1a1a1a;
+  --mv-dark: #0d0d0d;
+}
+
+body {
+  background-color: var(--mv-dark);
+  color: white;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--mv-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mv-yellow);
+  border-radius: 4px;
+}
+
+/* Countdown pulse animation */
+@keyframes pulse-urgent {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse-urgent {
+  animation: pulse-urgent 1s ease-in-out infinite;
+}
+
+/* Card hover effect */
+.auction-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auction-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.15);
+}
